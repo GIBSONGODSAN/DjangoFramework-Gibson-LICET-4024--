@@ -1,3 +1,7 @@
+Sure, here's a detailed README file template for your Django REST Framework music application:
+
+---
+
 # Music Application with Django REST Framework
 
 This is a music application built using Django REST Framework with SQLite3 as the backend database. The frontend is developed using HTML, CSS, JavaScript, and Bootstrap framework.
@@ -6,6 +10,9 @@ This is a music application built using Django REST Framework with SQLite3 as th
 
 - **User Authentication**: Users can sign up, log in, and log out securely.
 - **Browse Music**: Users can browse through a collection of songs.
+- **Search Music**: Users can search for specific songs by title, artist, or genre.
+- **User Playlists**: Users can create, edit, and delete their playlists.
+- **Song Management**: Admins can add, edit, and delete songs.
 
 ## Technologies Used
 
@@ -54,10 +61,20 @@ This is a music application built using Django REST Framework with SQLite3 as th
 - **User Authentication**:
   - Visit `/signup` to create a new account.
   - Visit `/login` to log in to your account.
+  - Visit `/logout` to log out of your account.
   
 - **Browse Music**:
   - Visit `/music` to browse through the collection of songs.
   
+- **Search Music**:
+  - Use the search bar on the music page to search for specific songs by title, artist, or genre.
+  
+- **User Playlists**:
+  - Visit `/playlists` to view, create, edit, and delete your playlists.
+  
+- **Song Management**:
+  - Admins can access the Django admin panel at `/admin` to manage songs.
+
 ## Contributing
 
 Contributions are welcome! If you would like to contribute to this project, please follow these steps:
@@ -72,3 +89,7 @@ Contributions are welcome! If you would like to contribute to this project, plea
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+---
+
+Feel free to modify and expand upon this README file according to your specific project details and requirements.
