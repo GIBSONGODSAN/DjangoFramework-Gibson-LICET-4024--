@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sign-up.css">
+    <link rel = "icon" href ="icon.png" type = "image/x-icon">
+    <script src="https://kit.fontawesome.com/92aa46a256.js" crossorigin="anonymous"></script>
+    <title>Upstring - SignUp and Login</title>
+</head>
+<body>
+    <main>
+        <section id="brand-image">
+            <!-- <img src="default.png" alt=""> -->
+            <div class="horizontal-line"></div>
+        </section>
+
+        <section id="sign-up-form">
+            <div class="form-wrapper">
+                <h1>Sign up for free to start listening.</h1>
+                <a href="songs.html">
+                    <button><i class="fab fa-facebook-f"></i> Sign Up with Facebook</button>
+                </a>
+                
+                <div class="divider">
+                    <div></div>
+                    <p>or</p>
+                    <div></div>
+                </div>
+
+                <form>
+                    <label>What's your email?</label> 
+                    <input id="email" type="text" placeholder="Enter your email.">
+
+                    <label>Create a password</label> 
+                    <input id="password" type="password" placeholder="Create a password.">
+
+                    <label>What should we call you?</label> 
+                    <input id="profile-name" type="text" placeholder="Enter a Profile name.">
+
+                    <label>What's your date of birth?</label> 
+                    <input id="dob" type="date">
+
+                    <label> What's your gender?</label>
+                    <div class="gender-container">
+                        <input type="radio" id="male" name="gender" value="male" class="gender-radio">
+                        <label for="male" class="gender">Male</label><br>
+                        <input type="radio" id="female" name="gender" value="female" class="gender-radio">
+                        <label for="female">Female</label class="gender"><br>
+                        <input type="radio" id="other" name="gender" value="other" class="gender-radio">
+                        <label for="other" class="gender">Other</label>
+                    </div>
+                    <input id='marketing-checkbox' type="checkbox" class="gender">Share my registration data with Spotify's content providers for marketing purposes.
+
+
+                </form>
+                
+                    <button class="sign-up-btn" onclick="submitForm()">Sign Up</button>
+               
+                
+            </div>
+            
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function submitForm() {
+    // Get gender radio buttons
+    const genderRadios = document.querySelectorAll('input[name="gender"]');
+
+    // Initialize gender variable
+    let gender = '';
+
+    // Loop through gender radio buttons to find the checked one
+    genderRadios.forEach(radio => {
+        if (radio.checked) {
+            gender = radio.value;
+        }
+    });
+
+    // Check if gender is still empty (no radio button checked)
+    if (gender === '') {
+        // Handle error, e.g., show an alert
+        alert('Please select your gender.');
+        return;
+    }
+
+    // Get form values
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const profileName = document.getElementById('profile-name').value;
+    const dob = document.getElementById('dob').value;
+    const marketingCheckbox = document.getElementById('marketing-checkbox').checked;
+
+    // Create data object
+    const data = {
+        email: email,
+        password: password,
+        profileName: profileName,
+        dob: dob,
+        gender: gender,
+        marketingCheckbox: marketingCheckbox
+    };
+
+    console.log('Form data:', data);
+    debugger;
+
+    // Send data to URL using Axios
+    axios.post('http://127.0.0.1:8000/music/signup/', data)
+        .then(response => {
+            console.log('Form submitted successfully:', response);
+            window.location.href = 'index.html';
+        })
+        .catch(error => {
+            console.error('Error submitting form:', error);
+            // Handle error
+        });
+}
+
+    </script>
+</body>
+</html>
